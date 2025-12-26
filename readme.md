@@ -34,8 +34,8 @@ This master repository contains:
 
 3. **Clone and setup**
    ```bash
-   git clone https://github.com/texas805/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/texas805/{your-roll-no}.git
+   cd {your-roll-no}
    ```
 
 4. **Start working on assignments**
