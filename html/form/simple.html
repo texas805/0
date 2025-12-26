@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form in HTML</title>
+</head>
+<body>
+    <form action="http://texas805.test/html/form/submit.php" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        </div>  
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <label for="gender">Gender:</label>
+            <input type="radio" id="gender" name="gender" value="male">
+            <label for="gender">Male</label>
+            <input type="radio" id="gender" name="gender" value="female">
+            <label for="gender">Female</label>
+            <input type="radio" id="gender" name="gender" value="other">
+            <label for="gender">Other</label>
+        </div>
+
+        <div>
+            <label for="hobbies">Hobbies:</label>
+            <input type="checkbox" id="hobbies" name="hobbies[]" value="reading">
+            <label for="hobbies">Reading</label>
+            <input type="checkbox" id="hobbies" name="hobbies[]" value="writing">
+            <label for="hobbies">Writing</label>
+            <input type="checkbox" id="hobbies" name="hobbies[]" value="gaming">
+            <label for="hobbies">Gaming</label>
+        </div>
+
+        <div>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="nepal">Nepal</option>
+                <option value="india">India</option>
+                <option value="china">China</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>
