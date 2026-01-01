@@ -1,0 +1,33 @@
+img{
+    width: 100%;
+    height: auto;
+}
+.clearfix{
+    content: " ";
+    clear:both;
+}
+
+#header-logo{
+    width: 120px;
+    float: left;
+}
+.main-header{
+    background-color: #000;
+}
+.header-navigation{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    float: right;
+}
+
+.header-navigation li{
+    display: inline;
+    padding-left: 15px;
+    font-size: 24px;
+}
+
+.header-navigation li a{
+    color: #fff;
+}
