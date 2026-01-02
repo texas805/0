@@ -31,3 +31,9 @@ img{
 .header-navigation li a{
     color: #fff;
 }
+
+/* Hero Banner Section */
+.hero-banner img{
+    height: 600px;
+    object-fit: cover;
+}
