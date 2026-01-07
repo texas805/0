@@ -37,3 +37,31 @@ img{
     height: 600px;
     object-fit: cover;
 }
+
+/* Product Grid Section */
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.product-item{
+    border: 1px solid #000;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-flex{
+    display: flex;
+}
+
+.footer-copyright{
+    width: 100%;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 0 15px 0 !important;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
