@@ -28,8 +28,15 @@ img{
     font-size: 24px;
 }
 
-.header-navigation li a{
+.header-navigation li a,
+.header-navigation li a:visited{
     color: #fff;
+}
+
+.header-navigation li a:hover,
+.header-navigation li a:focus,
+.header-navigation li a:active{
+    color: #d20000;
 }
 
 /* Hero Banner Section */
