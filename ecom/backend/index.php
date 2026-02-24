@@ -1,6 +1,6 @@
 <?php
-$db_filename = 'db.php';
-require_once( $db_filename );
+
+require_once('functions.php');
 
 echo 'Hello Admin <br>';
 ?>
@@ -14,11 +14,37 @@ echo 'Hello Admin <br>';
 <body>
 
     <div class="entry_form">
-        <form action="">
+        <?php
+            $old_form_data = [];
+            if( isset($_SESSION) && $_SESSION['validation'] != "passed" && isset($_SESSION['old_form_data']) ){
+                $old_form_data = $_SESSION['old_form_data'];
+            }
+
+        ?>
+        <form action="" method="post">
             <div class="form-control">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name">
+                <input type="text" name="name" id="name" value="<?php echo $old_form_data['name'] ?? '' ?>">
             </div>
+            <div class="form-control">
+                <label for="regular_price">Regular Price</label>
+                <input type="text" name="regular_price" id="regular_price" value="<?php echo $old_form_data['regular_price'] ?? '' ?>">
+            </div>
+            <div class="form-control">
+                <label for="sale_price">Sale Price</label>
+                <input type="text" name="sale_price" id="sale_price" value="<?php echo $old_form_data['sale_price'] ?? '' ?>">
+            </div>
+            <div class="form-control">
+                <input type="submit" name="add_priduct_submit" value="submit">
+            </div>
+            <?php
+                if( isset($_SESSION) && $_SESSION['validation'] != "passed" && isset($_SESSION['validation']['message']) ){
+                    echo $_SESSION['validation']['message'];
+
+                    $_SESSION['validation'] = '';
+                    $_SESSION['old_form_data'] = '';
+                }
+            ?>
         </form>
     </div>
 
@@ -40,7 +66,7 @@ echo 'Hello Admin <br>';
                     while( $product = $products->fetch_assoc()){
                         echo '<tr>';
                         echo '<td>' . $product['pid'] . '</td>';
-                        echo '<td>' . $product['name'] . '</td>';
+                        echo '<td>' . $product['product_name'] . '</td>';
                         echo '<td>' . $product['sale_price'] . '</td>';
                         echo '<td>' . $product['regular_price'] . '</td>';
                         echo '<td>' . $product['image'] . '</td>';
