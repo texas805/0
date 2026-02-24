@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area of a Circle</title>
+</head>
+<body>
+    <h1>Area of a Circle</h1>
+    <form method="post">
+        <div>
+            <label for="radius">Radius:</label>
+            <input type="number" id="radius" name="radius">
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <div id="result">
+        <p>The area of the circle is: <span id="area"></span></p>
+    </div>
+
+    <script>
+        // read form data on submit.
+        var form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var radius = document.getElementById("radius").value;
+            var area = Math.PI * radius * radius;
+            document.getElementById("area").innerHTML = area;
+        });
+    </script>
+
+</body>
+</html>
