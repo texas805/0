@@ -130,3 +130,8 @@ img{
     width: 120px;
     object-fit: contain;
 }
+
+.regular_price.has_sale_price{
+    color: #d20000;
+    text-decoration: line-through;
+}

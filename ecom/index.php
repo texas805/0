@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+require_once('backend/functions.php');
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,54 +40,22 @@
         </div>
         <!-- Product Grid Section -->
         <div class="product-grid">
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="1">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="2">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="3">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="4">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="5">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="6">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="7">Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="assets/images/fishing-rod.jpg" alt="Product 1">
-                <h3>Product 1</h3>
-                <p>Price: $100</p>
-                <button class="add-to-cart" data-product-id="8">Add to Cart</button>
-            </div>
+            <?php
+                $products=fetch_products();
+
+                if($products->num_rows){
+                    while( $product = $products->fetch_assoc()){
+                        ?>
+                        <div class="product-item">
+                            <img src="assets/images/fishing-rod.jpg" alt="Product 1">
+                            <h3><?php echo $product['product_name'] ?></h3>
+                            <p>Price: <?php echo texas_price_html($product['regular_price'], $product['sale_price']); ?></p>
+                            <button class="add-to-cart" data-product-id="1">Add to Cart</button>
+                        </div>
+                        <?php
+                    }
+                }
+            ?>
         </div>
 
     </main>
