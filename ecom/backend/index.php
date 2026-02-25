@@ -16,7 +16,7 @@ echo 'Hello Admin <br>';
     <div class="entry_form">
         <?php
             $old_form_data = [];
-            if( isset($_SESSION) && $_SESSION['validation'] != "passed" && isset($_SESSION['old_form_data']) ){
+            if( isset($_SESSION['validation']) && $_SESSION['validation'] != "passed" && isset($_SESSION['old_form_data']) ){
                 $old_form_data = $_SESSION['old_form_data'];
             }
 
@@ -38,7 +38,7 @@ echo 'Hello Admin <br>';
                 <input type="submit" name="add_priduct_submit" value="submit">
             </div>
             <?php
-                if( isset($_SESSION) && $_SESSION['validation'] != "passed" && isset($_SESSION['validation']['message']) ){
+                if( isset($_SESSION['validation']) && $_SESSION['validation'] != "passed" && isset($_SESSION['validation']['message']) ){
                     echo $_SESSION['validation']['message'];
 
                     $_SESSION['validation'] = '';
@@ -56,6 +56,7 @@ echo 'Hello Admin <br>';
                 <th>Sale Price</th>
                 <th>Regular Price</th>
                 <th>thumbnail</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -70,6 +71,7 @@ echo 'Hello Admin <br>';
                         echo '<td>' . $product['sale_price'] . '</td>';
                         echo '<td>' . $product['regular_price'] . '</td>';
                         echo '<td>' . $product['image'] . '</td>';
+                        echo '<td>' . '<a href="?delete=' . $product['pid'] .'">Delete</a>' . '</td>';
                         echo '</tr>';
                     }
                 }
