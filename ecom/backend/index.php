@@ -21,7 +21,7 @@ echo 'Hello Admin <br>';
             }
 
         ?>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="form-control">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" value="<?php echo $old_form_data['name'] ?? '' ?>">
@@ -34,9 +34,15 @@ echo 'Hello Admin <br>';
                 <label for="sale_price">Sale Price</label>
                 <input type="text" name="sale_price" id="sale_price" value="<?php echo $old_form_data['sale_price'] ?? '' ?>">
             </div>
+            
+            <div class="form-control">
+                <label for="thumbnail">image</label>
+                <input type="file" name="thumbnail" id="thumbnail">
+            </div>
             <div class="form-control">
                 <input type="submit" name="add_priduct_submit" value="submit">
             </div>
+
             <?php
                 if( isset($_SESSION['validation']) && $_SESSION['validation'] != "passed" && isset($_SESSION['validation']['message']) ){
                     echo $_SESSION['validation']['message'];
@@ -70,7 +76,8 @@ echo 'Hello Admin <br>';
                         echo '<td>' . $product['product_name'] . '</td>';
                         echo '<td>' . $product['sale_price'] . '</td>';
                         echo '<td>' . $product['regular_price'] . '</td>';
-                        echo '<td>' . $product['image'] . '</td>';
+                        echo '<td>' . '<a data-fslightbox href="/ecom/backend/' . $product['image'] . '">
+<img  style="width: 40px;" src="/ecom/backend/' . $product['image'] . '"></a>' . '</td>';
                         echo '<td>' . '<a href="?delete=' . $product['pid'] .'">Delete</a>' . '</td>';
                         echo '</tr>';
                     }
@@ -78,5 +85,8 @@ echo 'Hello Admin <br>';
             ?>
         </tbody>
     </table>
+
+    <script src="/ecom/assets/js/fslightbox.js"></script>
+
 </body>
 </html>

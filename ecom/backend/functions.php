@@ -3,6 +3,7 @@
 session_start();
 $db_filename = 'db.php';
 require_once( $db_filename );
+require_once ( 'functions.php' );
 
 texas_insert_products();
 texas_delete_products();
@@ -41,7 +42,13 @@ function texas_insert_products(){
         }
         $regular_price = texas_sanitization($_POST['regular_price']);
 
-        var_dump($_SESSION);
+        $storage = 'storage/';
+        $filename = $storage . basename($_FILES["thumbnail"]["name"]);
+
+        // $filetype = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $filename);
+
 
         if( isset($_SESSION) && $_SESSION['validation'] != "passed" ){
             $_SESSION['old_form_data'] = $_POST;
@@ -49,10 +56,9 @@ function texas_insert_products(){
         }
         else{
             // insert into db
-            $sql = "insert into products (product_name, sale_price, regular_price) values ('$name', '$sale_price', '$regular_price')";
+            $sql = "insert into products (product_name, sale_price, regular_price, image) values ('$name', '$sale_price', '$regular_price', '$filename')";
 
 
-            var_dump($sale_price);  
             $result = $conn->query($sql);
         
             header("location: http://texas805.test/ecom/backend/");
