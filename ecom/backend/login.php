@@ -1,3 +1,18 @@
+<?php
+
+require_once 'User.php';
+
+use Texas\Backend\User;
+
+
+$is_logged_in = User::is_logged_in();
+
+if($is_logged_in){
+    header('location: http://texas805.test/ecom/backend');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

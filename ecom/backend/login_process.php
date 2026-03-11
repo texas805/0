@@ -10,7 +10,7 @@ require_once('db.php');
 $username = $_POST['username'];
 $password = md5( $_POST['password'] );
 
-$sql = "select * from users where username = '$username' and password = '$password' Limit 1";
+$sql = "select username, email from users where username = '$username' and password = '$password' Limit 1";
 
 $result = $conn->query($sql);
 
@@ -18,7 +18,13 @@ $result = $conn->query($sql);
 if($result->num_rows){
     // login is valid
     echo 'Welcome to admin!<br>';
-    $_SESSION['logindata'] = 'loggedin';
+
+    $userData = $result->fetch_assoc();
+
+    // serialize
+    $serialized_data = serialize($userData);
+
+    $_SESSION['logindata'] = $serialized_data;
 
     echo $_SESSION['logindata'];
 }
