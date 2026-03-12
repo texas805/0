@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <script src="jquery-4.0.0.min.js"></script>
+</head>
+<body>
+    <h1>hello world</h1>
+    <div class="this">This content</div>
+    <div class="that" style="display: none;">That content</div>
+    <button id="thisbutton">Click Me!</button>
+
+    <script>
+        let btn = $('#thisbutton');
+        let thisContent = $('.this');
+        let thatContent = $('.that');
+        btn.on('click', function(){
+            thisContent.hide();
+            thatContent.show();
+            confirm('dfghjkl;');
+        })
+    </script>
+</body>
+</html>
